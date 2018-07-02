@@ -13,14 +13,16 @@ class App extends Component {
 
   moveFriend = id => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
-    const newfriends = this.state.friends.filter(friend => friend.id !== id);
+    const clickedfriends = this.state.friends.filter(friend => friend.id === id);
+    const notclickedfriends = this.state.friends.filter(friend => friend.id !== id);
     // Set this.state.friends equal to the new friends array
     this.setState({ friends });
-    this.setState({newfriends});
+    this.setState({clickedfriends});
+    this.setState({notclickedfriends})
     console.log(friends)
-    console.log(newfriends)
+    console.log(clickedfriends)
    friends.sort(function (a, b) { return 0.5 - Math.random() });
-   newfriends.sort(function (a, b) { return 0.5 - Math.random() });
+  // newfriends.sort(function (a, b) { return 0.5 - Math.random() });
   };
 
   // Map over this.state.friends and render a FriendCard component for each friend object
