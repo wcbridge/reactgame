@@ -27,6 +27,11 @@ class App extends Component {
       this.setState({ count: this.state.count + 1 });
     } else {
       this.setState({ count: 0 });
+     // this.setState({ clickedfriend: resetArray });
+      this.state.friends.slice().forEach((friend) => {
+        friend.clicked = false;
+      });
+      this.setState({ friends: this.state.friends });
     }
 
     // Set this.state.friends equal to the new friends array
