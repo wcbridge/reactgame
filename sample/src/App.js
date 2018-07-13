@@ -11,7 +11,8 @@ class App extends Component {
   state = {
     friends,
     count: 0,
-    clickedfriend: []
+    clickedfriend: [],
+    highScore:0
     
   };
 
@@ -24,10 +25,13 @@ class App extends Component {
     const clickedfriend = this.state.friends.filter(friend => friend.id === id);
     if (!clickedfriend[0].clicked) {
       clickedfriend[0].clicked = true;
-      this.setState({ count: this.state.count + 1 });
+      const count = this.state.count +1
+      this.setState({ count: count });
+      if (count >= this.state.highScore) {
+        this.setState({ highScore: count });
+      }
     } else {
       this.setState({ count: 0 });
-     // this.setState({ clickedfriend: resetArray });
       this.state.friends.slice().forEach((friend) => {
         friend.clicked = false;
       });
@@ -55,7 +59,12 @@ class App extends Component {
               <h3 className="card-title">Score!</h3>
               <div>{this.state.count}</div>
             </div>
-
+          </div>
+            <div className="card text-center">
+              <div className="card-header bg-primary text-white">
+                <h3 className="card-title">High Score!</h3>
+                <div>{this.state.highScore}</div>
+              </div>
           </div>
         </Title>
      
